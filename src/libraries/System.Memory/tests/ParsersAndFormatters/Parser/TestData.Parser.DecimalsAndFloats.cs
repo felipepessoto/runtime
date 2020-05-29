@@ -36,6 +36,7 @@ namespace System.Buffers.Text.Tests
                 }
 
                 yield return new ParserTestData<decimal>("1e" + int.MaxValue, default, 'E', expectedSuccess: false);
+                yield return new ParserTestData<decimal>("2.5976931e-101", default, 'E', expectedSuccess: false);
                 yield return new ParserTestData<decimal>("0.01e" + int.MinValue, new MutableDecimal() { Scale = 28 }.ToDecimal(), 'E', expectedSuccess: true);
                 yield return new ParserTestData<decimal>("-0.01e" + int.MinValue, new MutableDecimal() { Scale = 28, IsNegative = true }.ToDecimal(), 'E', expectedSuccess: true);
             }
